@@ -75,7 +75,7 @@
                                                     <td>{{$tas->sprovider_id}}</td>
                                                     <td>{{$tas->service_location}}</td>
                                                     <td>
-                                                        <a class="to-do-button" href="#" onclick="confirm('Are You Sure, Service Provider Done This Task?')|| event.stopImmediatePropagation()" wire:click.prevent="updateService({{$tas->id}})">Confirm</a>
+                                                        <a class="to-do-button" href="{{route('customer.customer_review',['tas_id'=>$tas->id])}}">Confirm</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
