@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class SproviderToDoList extends Component
 {
+
+    public function updateService($tas_id)
+    {
+        $task = PendingTask::find($tas_id);
+        $task->status = "finished";
+        $task->save();
+        session()->flash('message', 'Please Wait for Customer Confirmation!');
+    }
+
     public function render()
     {
         $spro = User::where('id', Auth::user()->id)->first();

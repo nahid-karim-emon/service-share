@@ -27,12 +27,12 @@
         <div class="bg_parallax image_02_parallax"></div>
         <div class="opacy_bg_02">
             <div class="container">
-                <h1>To Do</h1>
+                <h1>Request Task</h1>
                 <div class="crumbs">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li>/</li>
-                        <li>To Do</li>
+                        <li>Request Task</li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            All To Do
+                                            All Request Task
                                         </div>
                                         <div class="col-md-6">
                                            
@@ -63,9 +63,8 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Service Provider Id</th>
                                                 <th>Location</th>
-                                                <th>Phone</th>
-                                                <th>Amount</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -73,11 +72,10 @@
                                             @foreach($task as $tas)
                                                 <tr>
                                                     <td>{{$tas->id}}</td>
+                                                    <td>{{$tas->sprovider_id}}</td>
                                                     <td>{{$tas->service_location}}</td>
-                                                    <td>{{$tas->phone}}</td>
-                                                    <td>{{$tas->amount}}</td>
                                                     <td>
-                                                        <a class="to-do-button" href="#" onclick="confirm('Are you sure, you complete this task?')|| event.stopImmediatePropagation()" wire:click.prevent="updateService({{$tas->id}})">Done</a>
+                                                        <a class="to-do-button" href="#" onclick="confirm('Are You Sure, Service Provider Done This Task?')|| event.stopImmediatePropagation()" wire:click.prevent="updateService({{$tas->id}})">Confirm</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -93,5 +91,6 @@
         </div>
     </section>
 </div>
+
 
 

@@ -143,6 +143,7 @@
                                 <li class="login-form"> <a href="#" title="Register">Customer</a>
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
+                                        <li><a href="{{route('customer.request_service')}}">Request Task</a></li>
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>

@@ -37,17 +37,17 @@ class BookForm extends Component
 
         $service = Service::where('slug', $this->service_slug)->first();
         $customer = User::where('id', Auth::user()->id)->first();
+        $adminAmount = AdminAmount::where('id', 1)->first();
         $pending = new PendingTask();
-        $adminAmount = new AdminAmount();
+        $amount = $adminAmount->amount;
+        $amount = $amount + ($service->price);
         $pending->customer_id = $customer->id;
         $pending->service_id = $service->id;
         $pending->service_category_id = $service->service_category_id;
         $pending->service_location = $this->location;
         $pending->phone = $this->phone;
         $pending->amount = $service->price;
-        $adminAmount->customer_id = $customer->id;
-        $adminAmount->service_id = $service->id;
-        $adminAmount->amount = $service->price;
+        $adminAmount->amount = $amount;
         $pending->save();
         $adminAmount->save();
         session()->flash('message', 'Your request has been submitted for acceptance by our service providers!');

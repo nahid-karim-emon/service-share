@@ -15,6 +15,8 @@ class SproviderPendingTaskComponent extends Component
     public function updateService($tas_id)
     {
         $task = PendingTask::find($tas_id);
+        $spro = User::where('id', Auth::user()->id)->first();
+        $task->sprovider_id = $spro->id;
         $task->status = "accepted";
         $task->save();
         session()->flash('message', 'Service added your task list successfully!');

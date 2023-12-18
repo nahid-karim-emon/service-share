@@ -21,6 +21,7 @@ use App\Livewire\Admin\AdminServiceProviderComponent;
 use App\Livewire\BookForm;
 use App\Livewire\ChangeLocationComponent;
 use App\Livewire\ContactComponent;
+use App\Livewire\Customer\CustomerRequestService;
 use App\Livewire\Sprovider\EditSproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderPendingTaskComponent;
 use App\Livewire\Sprovider\SproviderProfileComponent;
@@ -60,6 +61,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
+    Route::get('/customer/request-service', CustomerRequestService::class)->name('customer.request_service');
 });
 
 //Service Provider
