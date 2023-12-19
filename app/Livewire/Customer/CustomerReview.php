@@ -65,6 +65,7 @@ class CustomerReview extends Component
         $review->completed_task_id = $sprovider->id;
         $review->rating = $this->rating;
         $review->review = $this->message;
+        $review->service_id = $service;
         $review->save();
         session()->flash('message', 'Thansks for your Valuable feedback!');
     }
