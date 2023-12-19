@@ -14,6 +14,7 @@ use App\Livewire\Admin\AdminServiceCategoryComponent;
 use App\Livewire\Customer\CustomerDashboardComponent;
 use App\Livewire\Sprovider\SproviderDashboardComponent;
 use App\Livewire\Admin\AdminAddServiceCategoryComponent;
+use App\Livewire\Admin\AdminApproveComponent;
 use App\Livewire\Admin\AdminContactComponent;
 use App\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Livewire\Admin\AdminEditServiceCategoryComponent;
@@ -27,6 +28,8 @@ use App\Livewire\Sprovider\EditSproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderPendingTaskComponent;
 use App\Livewire\Sprovider\SproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderToDoList;
+use App\Livewire\Sprovider\WithdrawMoney;
+use App\Livewire\WaitPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +57,7 @@ Route::post('/search', [SearchController::class, 'searchService'])->name('search
 Route::get('/change-location', ChangeLocationComponent::class)->name('home.change_location');
 Route::get('/contact-us', ContactComponent::class)->name('home.contact');
 Route::get('/book-form/{service_slug}', BookForm::class)->name('customer.bookform');
+Route::get('/waiting', WaitPage::class)->name('sprovider.wait');
 
 //Customer
 Route::middleware([
@@ -78,6 +82,7 @@ Route::middleware([
     Route::get('/sprovider/profile/edit', EditSproviderProfileComponent::class)->name('sprovider.edit_profile');
     Route::get('/sprovider/pending-task', SproviderPendingTaskComponent::class)->name('sprovider.pending_task');
     Route::get('/sprovider/to-do-list', SproviderToDoList::class)->name('sprovider.to_do_list');
+    Route::get('/sprovider/withdraw-money', WithdrawMoney::class)->name('sprovider.withdraw_money');
 });
 
 //Admin
@@ -96,5 +101,6 @@ Route::middleware([
     Route::get('/admin/service/add', AdminAddServiceComponent::class)->name('admin.add_service');
     Route::get('/admin/service/edit/{service_slug}', AdminEditServiceComponent::class)->name('admin.edit_service');
     Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contacts');
+    Route::get('/admin/aprove-sprovider', AdminApproveComponent::class)->name('admin.aprove_sprovider');
     Route::get('/admin/service-providers', AdminServiceProviderComponent::class)->name('admin.service_providers');
 });

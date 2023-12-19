@@ -125,6 +125,7 @@
                                         <li><a href="{{route('admin.service_categories')}}">Service Categories</a></li>
                                         <li><a href="{{route('admin.all_services')}}">All Services</a></li>
                                         <li><a href="{{route('admin.service_providers')}}">All Service Providers</a></li>
+                                        <li><a href="{{route('admin.aprove_sprovider')}}">Waiting Sprovider</a></li>
                                         <li><a href="{{route('admin.contacts')}}">All Contacts</a></li>
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
@@ -134,8 +135,13 @@
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('sprovider.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('sprovider.profile')}}">Profile</a></li>
-                                        <li><a href="{{route('sprovider.pending_task')}}">Pending Task</a></li>
+                                        @if(Auth::user()->status==='pending')
+                                            <li><a href="{{route('sprovider.wait')}}">Pending Task</a></li>
+                                        @else
+                                            <li><a href="{{route('sprovider.pending_task')}}">Pending Task</a></li>
+                                        @endif
                                         <li><a href="{{route('sprovider.to_do_list')}}">To Do</a></li>
+                                        <li><a href="{{route('sprovider.withdraw_money')}}">Withdraw Money</a></li>
                                         <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>
