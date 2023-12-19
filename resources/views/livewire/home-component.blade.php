@@ -80,7 +80,7 @@
                                     <h3>{{$service->name}}</h3>
                                     <hr class="separator">
                                     <p>{{$service->tagline}}</p>
-                                    <div class="content-btn"><a href="service-details/ac-dry-servicing.html"
+                                    <div class="content-btn"><a href="{{route('home.service_details',['service_slug'=>$service->slug])}}"
                                             class="btn btn-primary">Book Now</a></div>
                                     <div class="price"><span>&#36;</span><b>From</b>{{$service->price}}</div>
                                 </div>

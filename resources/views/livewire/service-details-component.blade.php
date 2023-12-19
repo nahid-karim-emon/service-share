@@ -136,7 +136,7 @@
                                             </h3>
                                             <hr class="separator">
                                             <p>{{$r_service->name}}</p>
-                                            <div class="content-btn"><a href="ac-wet-servicing.html"
+                                            <div class="content-btn"><a href="{{route('home.service_details',['service_slug'=>$r_service->slug])}}"
                                                     class="btn btn-warning">View Details</a></div>
                                             <div class="price"><span>&#36;</span><b>From</b>{{$r_service->price}} </div>
                                         </div>
