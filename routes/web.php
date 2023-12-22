@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ServiceDetailsComponent;
@@ -24,6 +25,7 @@ use App\Livewire\ChangeLocationComponent;
 use App\Livewire\ContactComponent;
 use App\Livewire\Customer\CustomerRequestService;
 use App\Livewire\Customer\CustomerReview;
+use App\Livewire\PaymentSummary;
 use App\Livewire\Sprovider\EditSproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderPendingTaskComponent;
 use App\Livewire\Sprovider\SproviderProfileComponent;
@@ -58,6 +60,7 @@ Route::get('/change-location', ChangeLocationComponent::class)->name('home.chang
 Route::get('/contact-us', ContactComponent::class)->name('home.contact');
 Route::get('/book-form/{service_slug}', BookForm::class)->name('customer.bookform');
 Route::get('/waiting', WaitPage::class)->name('sprovider.wait');
+Route::get('/payment-details', PaymentSummary::class)->name('home.payment_details');
 
 //Customer
 Route::middleware([
@@ -104,3 +107,17 @@ Route::middleware([
     Route::get('/admin/aprove-sprovider', AdminApproveComponent::class)->name('admin.aprove_sprovider');
     Route::get('/admin/service-providers', AdminServiceProviderComponent::class)->name('admin.service_providers');
 });
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

@@ -20,6 +20,7 @@ class BookForm extends Component
         $this->service_slug = $service_slug;
     }
 
+
     public function created($fields)
     {
         $this->validateOnly($fields, [
@@ -55,6 +56,8 @@ class BookForm extends Component
 
     public function render()
     {
-        return view('livewire.book-form')->layout('layouts.base');
+        $service = Service::where('slug', $this->service_slug)->first();
+        $customer = User::where('id', Auth::user()->id)->first();
+        return view('livewire.book-form', ['service' => $service, 'customer' => $customer])->layout('layouts.base');
     }
 }
