@@ -1,37 +1,39 @@
 <?php
 
-use App\Http\Controllers\SslCommerzPaymentController;
+use App\Livewire\BookForm;
+use App\Livewire\WaitPage;
 use App\Livewire\HomeComponent;
+use App\Livewire\PaymentSummary;
+use App\Livewire\ContactComponent;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ChangeLocationComponent;
+use App\Livewire\Customer\CustomerReview;
 use App\Livewire\ServiceDetailsComponent;
+use App\Livewire\Sprovider\WithdrawMoney;
 use App\Http\Controllers\SearchController;
+use App\Livewire\Customer\ApproveSProvider;
 use App\Livewire\ServiceCategoriesComponent;
+use App\Livewire\Admin\AdminApproveComponent;
+use App\Livewire\Admin\AdminContactComponent;
 use App\Livewire\ServicesByCategoryComponent;
+use App\Livewire\Sprovider\SproviderToDoList;
 use App\Livewire\Admin\AdminServicesComponent;
 use App\Livewire\Admin\AdminDashboardComponent;
 use App\Livewire\Admin\AdminAddServiceComponent;
 use App\Livewire\Admin\AdminEditServiceComponent;
+use App\Livewire\Customer\CustomerRequestService;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Livewire\Admin\AdminServiceCategoryComponent;
+use App\Livewire\Admin\AdminServiceProviderComponent;
 use App\Livewire\Customer\CustomerDashboardComponent;
+use App\Livewire\Customer\SProviderDetails;
+use App\Livewire\Sprovider\SproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderDashboardComponent;
 use App\Livewire\Admin\AdminAddServiceCategoryComponent;
-use App\Livewire\Admin\AdminApproveComponent;
-use App\Livewire\Admin\AdminContactComponent;
 use App\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Livewire\Admin\AdminEditServiceCategoryComponent;
-use App\Livewire\Admin\AdminServiceProviderComponent;
-use App\Livewire\BookForm;
-use App\Livewire\ChangeLocationComponent;
-use App\Livewire\ContactComponent;
-use App\Livewire\Customer\CustomerRequestService;
-use App\Livewire\Customer\CustomerReview;
-use App\Livewire\PaymentSummary;
 use App\Livewire\Sprovider\EditSproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderPendingTaskComponent;
-use App\Livewire\Sprovider\SproviderProfileComponent;
-use App\Livewire\Sprovider\SproviderToDoList;
-use App\Livewire\Sprovider\WithdrawMoney;
-use App\Livewire\WaitPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +72,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
     Route::get('/customer/request-service', CustomerRequestService::class)->name('customer.request_service');
+    Route::get('/customer/approve-sprovider', ApproveSProvider::class)->name('customer.approve_sprovider');
+    Route::get('/customer/sprovider_details/{tas_id}', SProviderDetails::class)->name('customer.sproviderdet');
     Route::get('/customer/customer-review/{tas_id}', CustomerReview::class)->name('customer.customer_review');
 });
 

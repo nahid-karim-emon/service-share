@@ -60,17 +60,18 @@ class CustomerReview extends Component
         $sprovider->save();
         $admin->save();
         $conTask->save();
-        $task->delete();
         $review = new ModelsCustomerReview();
         $sprovider = CompletedTask::where('sprovider_id', $sprovider_id)->where('customer_id', Auth::user()->id)->Where('service_id', $service)->first();
         $spro = ServiceProvider::where('user_id', $sprovider_id)->first();
         $spro->amount = ($spro->amount) + $samount;
-        $review->completed_task_id = $sprovider->id;
+        $review->customer_id = $task->customer_id;
+        $review->sprovider_id = $task->sprovider_id;
         $review->rating = $this->rating;
         $review->review = $this->message;
         $review->service_id = $service;
         $review->save();
         $spro->save();
+        $task->delete();
         session()->flash('message', 'Thansks for your Valuable feedback!');
     }
     public function render()
