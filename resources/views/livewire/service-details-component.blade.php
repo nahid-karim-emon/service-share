@@ -76,7 +76,7 @@
                                         <table class="table">
                                             <tr>
                                                 <td style="border-top: none;">Price</td>
-                                                <td style="border-top: none;"><span>&#36;</span> {{$service->price}}</td>
+                                                <td style="border-top: none;"><span>৳</span> {{$service->price}}</td>
                                             </tr>
                                             <tr>
                                                 <td>Quntity</td>
@@ -89,7 +89,7 @@
                                                 @if($service->discount_type == 'fixed')
                                                     <tr>
                                                         <td>Discount</td>
-                                                        <td>${{$service->discount}}</td>
+                                                        <td>৳{{$service->discount}}</td>
                                                     </tr>
                                                     @php $total = $total-$service->discount; @endphp
                                                 @elseif($service->discount_type == 'percent')
@@ -102,7 +102,7 @@
                                             @endif
                                             <tr>
                                                 <td>Total</td>
-                                                <td><span>&#36;</span> {{$total}}</td>
+                                                <td><span>৳</span> {{$total}}</td>
                                             </tr>
                                         </table>
                                     </div>

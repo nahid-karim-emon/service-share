@@ -163,7 +163,7 @@
                         </select>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
+                        <label for="state">Distirct</label>
                         <select class="custom-select d-block w-100" id="state" required>
                             <option value="">Choose...</option>
                             <option value="Dhaka">Dhaka</option>
