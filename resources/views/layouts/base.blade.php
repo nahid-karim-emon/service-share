@@ -122,6 +122,7 @@
                                 <li class="login-form"> <a href="#" title="Register">Admin</a>
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+                                        <li><a href="{{route('admin.all_users')}}">All Users</a></li>
                                         <li><a href="{{route('admin.service_categories')}}">Service Categories</a></li>
                                         <li><a href="{{route('admin.all_services')}}">All Services</a></li>
                                         <li><a href="{{route('admin.service_providers')}}">All Service Providers</a></li>

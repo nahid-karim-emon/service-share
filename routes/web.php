@@ -32,6 +32,7 @@ use App\Livewire\Sprovider\SproviderDashboardComponent;
 use App\Livewire\Admin\AdminAddServiceCategoryComponent;
 use App\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Livewire\Admin\AdminEditServiceCategoryComponent;
+use App\Livewire\Admin\AdminViewUserComponent;
 use App\Livewire\Sprovider\EditSproviderProfileComponent;
 use App\Livewire\Sprovider\SproviderPendingTaskComponent;
 
@@ -110,6 +111,7 @@ Route::middleware([
     Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contacts');
     Route::get('/admin/aprove-sprovider', AdminApproveComponent::class)->name('admin.aprove_sprovider');
     Route::get('/admin/service-providers', AdminServiceProviderComponent::class)->name('admin.service_providers');
+    Route::get('/admin/all-users', AdminViewUserComponent::class)->name('admin.all_users');
 });
 
 // SSLCOMMERZ Start
