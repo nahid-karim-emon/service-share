@@ -75,7 +75,7 @@
                                                     <td>{{$tas->task_id}}</td>
                                                     <td>{{$tas->sprovider_id}}</td>
                                                     <td>
-                                                        <a class="to-do-button" href="{{route('customer.sproviderdet',['tas_id'=>$tas->id])}}">Details</a>
+                                                        <a class="to-do-button" href="{{route('customer.sproviderdet',['tas_id'=>$tas->task_id])}}">Details</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

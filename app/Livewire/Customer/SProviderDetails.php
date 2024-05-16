@@ -26,7 +26,12 @@ class SProviderDetails extends Component
 
     public function render()
     {
-        $task1 = WaitingTask::where('customer_id', Auth::user()->id)->first();
+        $task1 = WaitingTask::where('customer_id', Auth::user()->id)
+            ->where('status', 'pending')
+            ->first();
+        if ($task1 == null) {
+            return view('livewire.customer.s-provider-details')->layout('layouts.base');
+        }
         $review = CustomerReview::where('sprovider_id', $task1->sprovider_id)->paginate(15);
         $spro = User::where('id', $task1->sprovider_id);
         return view('livewire.customer.s-provider-details', ['spro' => $spro, 'review' => $review, 'tas' => $task1])->layout('layouts.base');

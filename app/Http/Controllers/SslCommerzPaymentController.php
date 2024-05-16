@@ -102,21 +102,39 @@ class SslCommerzPaymentController extends Controller
         $service_slug = $re->slug;
         $service = Service::where('slug', $service_slug)->first();
         $customer = User::where('id', Auth::user()->id)->first();
+        $customer->total_order = $customer->total_order + 1;
+        $total_order = $customer->total_order;
+        if ($total_order >= 100) {
+            $customer->usertype = "platium";
+            $customer->discount = 15;
+        } else if ($total_order >= 50) {
+            $customer->usertype = "gold";
+            $customer->discount = 10;
+        } else if ($total_order >= 10) {
+            $customer->usertype = "silver";
+            $customer->discount = 5;
+        } else {
+            $customer->usertype = "bronze";
+            $customer->discount = 0;
+        }
+        $customer->save();
         $adminAmount = AdminAmount::where('id', 1)->first();
         $pending = new PendingTask();
         $amount = $adminAmount->amount;
-        $amount = $amount + ($service->price);
+        $discount = ($service->price * $customer->discount) / 100;
+        $amount = $amount + ($service->price) - $discount;
         $pending->customer_id = $customer->id;
         $pending->service_id = $service->id;
         $pending->service_category_id = $service->service_category_id;
         $pending->service_location = $re->cus_addr1;
         $pending->phone = $re->cus_phone;
-        $pending->amount = $service->price;
+        $pending->amount = $service->price - $discount;
         $adminAmount->amount = $amount;
         $pending->save();
+
         $adminAmount->save();
         $post_data = array();
-        $post_data['total_amount'] = $service->price; # You cant not pay less than 10
+        $post_data['total_amount'] = $service->price - $discount; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 

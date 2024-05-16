@@ -112,8 +112,25 @@
                     <span class="text-muted">{{$service->name}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
+                    <span>Service Price (BDT)</span>
+                    <strong>{{ $service->price }} TK</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>User Type</span>
+                    <strong>{{ $customer->usertype }}</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Discount (percentage)</span>
+                    <strong>{{ $customer->discount }} %</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
                     <span>Total (BDT)</span>
-                    <strong>{{$service->price}} TK</strong>
+                    @php
+                        $total = $service->price;
+                        $discount = ($customer->discount*$total)/100;
+                        $total = $total - $discount;
+                    @endphp
+                    <strong>{{ $total }} TK</strong>
                 </li>
             </ul>
         </div>

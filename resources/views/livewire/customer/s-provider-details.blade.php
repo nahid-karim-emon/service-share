@@ -39,6 +39,7 @@
         <br>
         <br>
             <div class="row text-center">
+                @if(isset($review) && $review->count() > 0)
                 @foreach($review as $rev)
                 <div class="col-md-4 mb-4 mb-md-0">
                     <div class="card">
@@ -52,11 +53,16 @@
                     </div>
                 </div>
                 @endforeach
+                @else 
+                <div class="alert alert-success">Succesfully Approved this survice provider</div>
+                @endif
             </div>
             
-   <div class="to-btn">
+   <div class="to-btn">`
+    @if(isset($review) && $review->count() > 0)
     <a class="to-do-button" href="#" onclick="confirm('Are you sure, you approve this service provider?')|| event.stopImmediatePropagation()" wire:click.prevent="updatePendingTask({{$tas->id}})">Approve</a>
     {{$review->links()}}
+    @endif
     {{-- {{$spro->links()}} --}}
    </div>
        
