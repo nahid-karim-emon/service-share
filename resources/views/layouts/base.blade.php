@@ -147,7 +147,7 @@
                                     </ul>
                                 </li>
                             @else
-                                <li class="login-form"> <a href="#" title="Register">Customer</a>
+                                <li class="login-form"> <a href="#" title="Register">Customer ({{Auth::user()->usertype}})</a>
                                     <ul class="drop-down one-column hover-fade">
                                         <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
                                         <li><a href="{{route('customer.approve_sprovider')}}">Select SProvider</a></li>

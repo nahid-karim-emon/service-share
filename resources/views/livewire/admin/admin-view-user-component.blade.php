@@ -28,12 +28,13 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
+                                                {{-- <th>Email</th> --}}
                                                 <th>User Type</th>
                                                 <th>Address</th>
                                                 <th>Contact Number</th>
                                                 <th>Discount</th>
                                                 <th>Total Orders</th>
-                                                {{-- <th>Action</th> --}}
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,15 +48,16 @@
                                                     @endphp
                                                     <td>{{$l}}</td>
                                                     <td>{{$user->name}}</td>
+                                                    {{-- <td>{{$user->email}}</td> --}}
                                                     <td>{{$user->usertype}}</td>
                                                     <td>{{$user->address}}</td>
                                                     <td>+880{{$user->phone}}</td>
                                                     <td>{{$user->discount}}%</td>
                                                     <td>{{$user->total_order}}</td>
-                                                    {{-- <td>
-                                                        <a href="{{route('admin.edit_service',['service_slug'=>$service->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
-                                                        <a href="#" onclick="confirm('Are you sure, you want to delete this service?')|| event.stopImmediatePropagation()" wire:click.prevent="deleteService({{$service->id}})" style="mergin-left:10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
-                                                    </td> --}}
+                                                    <td>
+                                                        <a href="#"><i class="fa fa-edit fa-2x text-info"></i></a>
+                                                        <a href="#" style="mergin-left:10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

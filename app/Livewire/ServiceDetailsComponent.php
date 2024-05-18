@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ServiceDetailsComponent extends Component
@@ -15,8 +16,9 @@ class ServiceDetailsComponent extends Component
     }
     public function render()
     {
+        $user = Auth::user();
         $service = Service::where('slug', $this->service_slug)->first();
         $r_service = Service::where('service_category_id', $service->service_category_id)->where('slug', '!=', $this->service_slug)->inRandomOrder()->first();
-        return view('livewire.service-details-component', ['service' => $service, 'r_service' => $r_service])->layout('layouts.base');
+        return view('livewire.service-details-component', ['service' => $service, 'r_service' => $r_service, 'user' => $user])->layout('layouts.base');
     }
 }

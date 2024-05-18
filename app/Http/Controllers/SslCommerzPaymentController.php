@@ -105,12 +105,12 @@ class SslCommerzPaymentController extends Controller
         $customer->total_order = $customer->total_order + 1;
         $total_order = $customer->total_order;
         if ($total_order >= 100) {
-            $customer->usertype = "platium";
+            $customer->usertype = "platinum";
             $customer->discount = 15;
         } else if ($total_order >= 50) {
             $customer->usertype = "gold";
             $customer->discount = 10;
-        } else if ($total_order >= 10) {
+        } else if ($total_order >= 20) {
             $customer->usertype = "silver";
             $customer->discount = 5;
         } else {

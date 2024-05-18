@@ -82,23 +82,21 @@
                                                 <td>Quntity</td>
                                                 <td>1</td>
                                             </tr>
+                                            <tr>
+                                                <td>User Type</td>
+                                                <td>{{$user->usertype}}</td>
+                                            </tr>
                                             @php 
                                                 $total = $service->price;
                                             @endphp
-                                            @if($service->discount)
-                                                @if($service->discount_type == 'fixed')
-                                                    <tr>
-                                                        <td>Discount</td>
-                                                        <td>৳{{$service->discount}}</td>
-                                                    </tr>
-                                                    @php $total = $total-$service->discount; @endphp
-                                                @elseif($service->discount_type == 'percent')
-                                                    <tr>
-                                                        <td>Discount</td>
-                                                        <td>{{$service->discount}}%</td>
-                                                        @php $total = $total-($total*$service->discount/100); @endphp
-                                                    </tr>
-                                                @endif
+                                            @if($user->discount)
+                                                <tr>
+                                                    <td>Discount</td>
+                                                    <td>{{$user->discount}}%</td>
+                                                </tr>
+                                                @php
+                                                    $total = $total-$total*($user->discount/100);
+                                                @endphp
                                             @endif
                                             <tr>
                                                 <td>Total</td>

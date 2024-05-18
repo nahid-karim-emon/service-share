@@ -107,7 +107,6 @@
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                         <h6 class="my-0">Service name</h6>
-                        <small class="text-muted">Brief description</small>
                     </div>
                     <span class="text-muted">{{$service->name}}</span>
                 </li>
